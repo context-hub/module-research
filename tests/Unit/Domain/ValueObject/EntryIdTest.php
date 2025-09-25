@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\Research\Domain\ValueObject;
+namespace Tests\Unit\Domain\ValueObject;
 
 use Butschster\ContextGenerator\Research\Domain\ValueObject\EntryId;
 use PHPUnit\Framework\TestCase;

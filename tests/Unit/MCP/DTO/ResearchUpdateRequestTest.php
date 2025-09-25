@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\Research\MCP\DTO;
+namespace Tests\Unit\MCP\DTO;
 
 use Butschster\ContextGenerator\Research\MCP\DTO\ResearchUpdateRequest;
 use PHPUnit\Framework\TestCase;

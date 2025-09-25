@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\Research\Domain\Model;
+namespace Tests\Unit\Domain\Model;
 
 use Butschster\ContextGenerator\Research\Domain\Model\Research;
 use PHPUnit\Framework\TestCase;

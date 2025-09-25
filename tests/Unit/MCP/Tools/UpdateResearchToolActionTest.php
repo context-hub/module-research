@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\Research\MCP\Tools;
+namespace Tests\Unit\MCP\Tools;
 
 use Butschster\ContextGenerator\Research\Domain\Model\Research;
 use Butschster\ContextGenerator\Research\Domain\ValueObject\ResearchId;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\Research\Service;
+namespace Tests\Unit\Service;
 
 use Butschster\ContextGenerator\Research\Domain\Model\Research;
 use Butschster\ContextGenerator\Research\Domain\ValueObject\ResearchId;
