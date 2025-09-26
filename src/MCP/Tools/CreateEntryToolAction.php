@@ -4,17 +4,14 @@ declare(strict_types=1);
 
 namespace Butschster\ContextGenerator\Research\MCP\Tools;
 
+use Butschster\ContextGenerator\McpServer\Action\ToolResult;
 use Butschster\ContextGenerator\Research\Domain\ValueObject\ResearchId;
 use Butschster\ContextGenerator\Research\Exception\ResearchException;
 use Butschster\ContextGenerator\Research\Exception\ResearchNotFoundException;
 use Butschster\ContextGenerator\Research\MCP\DTO\EntryCreateRequest;
 use Butschster\ContextGenerator\Research\Service\EntryServiceInterface;
 use Butschster\ContextGenerator\Research\Service\ResearchServiceInterface;
-use Butschster\ContextGenerator\McpServer\Attribute\InputSchema;
-use Butschster\ContextGenerator\McpServer\Attribute\Tool;
-use Butschster\ContextGenerator\McpServer\Action\ToolResult;
-use Butschster\ContextGenerator\McpServer\Routing\Attribute\Post;
-use Mcp\Types\CallToolResult;
+use PhpMcp\Schema\Result\CallToolResult;
 use Psr\Log\LoggerInterface;
 
 #[Tool(
@@ -76,7 +73,6 @@ final readonly class CreateEntryToolAction
             ];
 
             return ToolResult::success($response);
-
         } catch (ResearchNotFoundException $e) {
             $this->logger->error('Research not found', [
                 'research_id' => $request->researchId,
@@ -84,7 +80,6 @@ final readonly class CreateEntryToolAction
             ]);
 
             return ToolResult::error($e->getMessage());
-
         } catch (ResearchException $e) {
             $this->logger->error('Research error during entry creation', [
                 'research_id' => $request->researchId,
@@ -92,7 +87,6 @@ final readonly class CreateEntryToolAction
             ]);
 
             return ToolResult::error($e->getMessage());
-
         } catch (\Throwable $e) {
             $this->logger->error('Unexpected error creating entry', [
                 'research_id' => $request->researchId,

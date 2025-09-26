@@ -13,7 +13,7 @@ use Butschster\ContextGenerator\McpServer\Attribute\InputSchema;
 use Butschster\ContextGenerator\McpServer\Attribute\Tool;
 use Butschster\ContextGenerator\McpServer\Action\ToolResult;
 use Butschster\ContextGenerator\McpServer\Routing\Attribute\Post;
-use Mcp\Types\CallToolResult;
+use PhpMcp\Schema\Result\CallToolResult;
 use Psr\Log\LoggerInterface;
 
 #[Tool(
@@ -65,7 +65,6 @@ final readonly class UpdateResearchToolAction
             return ToolResult::success([
                 'success' => true,
             ]);
-
         } catch (ResearchNotFoundException $e) {
             $this->logger->error('Research not found', [
                 'research_id' => $request->researchId,
@@ -73,7 +72,6 @@ final readonly class UpdateResearchToolAction
             ]);
 
             return ToolResult::error($e->getMessage());
-
         } catch (ResearchException $e) {
             $this->logger->error('Error during research update', [
                 'research_id' => $request->researchId,
@@ -81,7 +79,6 @@ final readonly class UpdateResearchToolAction
             ]);
 
             return ToolResult::error($e->getMessage());
-
         } catch (\Throwable $e) {
             $this->logger->error('Unexpected error updating research', [
                 'research_id' => $request->researchId,

@@ -12,13 +12,12 @@
   ],
   "require": {
     "php": ">=8.3",
+    "ctx/mcp-server": "^1.0",
     "cocur/slugify": "^4.6",
-    "logiscape/mcp-sdk-php": "^1.0",
     "spiral/boot": "^3.15",
     "spiral/config": "^3.15",
     "spiral/console": "^3.15",
-    "spiral/files": "^3.15",
-    "spiral/json-schema-generator": "^2.1"
+    "spiral/files": "^3.15"
   },
   "require-dev": {
     "spiral/code-style": "^2.2",
