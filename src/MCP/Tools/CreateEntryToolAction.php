@@ -11,6 +11,9 @@ use Butschster\ContextGenerator\Research\Exception\ResearchNotFoundException;
 use Butschster\ContextGenerator\Research\MCP\DTO\EntryCreateRequest;
 use Butschster\ContextGenerator\Research\Service\EntryServiceInterface;
 use Butschster\ContextGenerator\Research\Service\ResearchServiceInterface;
+use Butschster\ContextGenerator\McpServer\Attribute\InputSchema;
+use Butschster\ContextGenerator\McpServer\Attribute\Tool;
+use Butschster\ContextGenerator\McpServer\Routing\Attribute\Post;
 use PhpMcp\Schema\Result\CallToolResult;
 use Psr\Log\LoggerInterface;
 
