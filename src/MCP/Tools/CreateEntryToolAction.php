@@ -15,7 +15,7 @@ use PhpMcp\Schema\Result\CallToolResult;
 use Psr\Log\LoggerInterface;
 
 #[Tool(
-    name: 'research-create-entry',
+    name: 'research-entry-create',
     description: 'Add new content entries to research categories',
     title: 'Create Entry',
 )]
@@ -28,7 +28,7 @@ final readonly class CreateEntryToolAction
         private ResearchServiceInterface $service,
     ) {}
 
-    #[Post(path: '/tools/call/research-create-entry', name: 'tools.research-create-entry')]
+    #[Post(path: '/tools/call/research-entry-create', name: 'tools.research-entry-create')]
     public function __invoke(EntryCreateRequest $request): CallToolResult
     {
         $this->logger->info('Creating new entry', [
