@@ -145,7 +145,7 @@ final readonly class FileStorageDriver implements StorageDriverInterface
         $this->validateEntryAgainstTemplate($template, $resolvedRequest);
 
         // Generate entry ID and create entry
-        $entryId = $this->generateId('entry_');
+        $entryId = $this->generateId('entry_' . \uniqid());
         $now = new \DateTime();
 
         $entry = new Entry(
