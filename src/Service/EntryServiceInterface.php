@@ -7,6 +7,10 @@ namespace Butschster\ContextGenerator\Research\Service;
 use Butschster\ContextGenerator\Research\Domain\Model\Entry;
 use Butschster\ContextGenerator\Research\Domain\ValueObject\EntryId;
 use Butschster\ContextGenerator\Research\Domain\ValueObject\ResearchId;
+use Butschster\ContextGenerator\Research\Exception\EntryNotFoundException;
+use Butschster\ContextGenerator\Research\Exception\ResearchException;
+use Butschster\ContextGenerator\Research\Exception\ResearchNotFoundException;
+use Butschster\ContextGenerator\Research\Exception\TemplateNotFoundException;
 use Butschster\ContextGenerator\Research\MCP\DTO\EntryCreateRequest;
 use Butschster\ContextGenerator\Research\MCP\DTO\EntryUpdateRequest;
 
@@ -21,9 +25,9 @@ interface EntryServiceInterface
      * Creates an entry with title, description, content, and metadata.
      * Description is auto-generated from content if not provided.
      *
-     * @throws \Butschster\ContextGenerator\Research\Exception\ResearchNotFoundException
-     * @throws \Butschster\ContextGenerator\Research\Exception\TemplateNotFoundException
-     * @throws \Butschster\ContextGenerator\Research\Exception\ResearchException
+     * @throws ResearchNotFoundException
+     * @throws TemplateNotFoundException
+     * @throws ResearchException
      */
     public function createEntry(ResearchId $researchId, EntryCreateRequest $request): Entry;
 
@@ -33,9 +37,9 @@ interface EntryServiceInterface
      * Updates entry fields including title, description, content, status, and tags.
      * Supports partial updates - only provided fields are modified.
      *
-     * @throws \Butschster\ContextGenerator\Research\Exception\ResearchNotFoundException
-     * @throws \Butschster\ContextGenerator\Research\Exception\EntryNotFoundException
-     * @throws \Butschster\ContextGenerator\Research\Exception\ResearchException
+     * @throws ResearchNotFoundException
+     * @throws EntryNotFoundException
+     * @throws ResearchException
      */
     public function updateEntry(ResearchId $researchId, EntryId $entryId, EntryUpdateRequest $request): Entry;
 
@@ -47,8 +51,8 @@ interface EntryServiceInterface
     /**
      * Get a specific entry by ID
      *
-     * @throws \Butschster\ContextGenerator\Research\Exception\ResearchNotFoundException
-     * @throws \Butschster\ContextGenerator\Research\Exception\ResearchException
+     * @throws ResearchNotFoundException
+     * @throws ResearchException
      */
     public function getEntry(ResearchId $researchId, EntryId $entryId): ?Entry;
 

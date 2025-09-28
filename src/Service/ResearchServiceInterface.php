@@ -6,6 +6,9 @@ namespace Butschster\ContextGenerator\Research\Service;
 
 use Butschster\ContextGenerator\Research\Domain\Model\Research;
 use Butschster\ContextGenerator\Research\Domain\ValueObject\ResearchId;
+use Butschster\ContextGenerator\Research\Exception\ResearchException;
+use Butschster\ContextGenerator\Research\Exception\ResearchNotFoundException;
+use Butschster\ContextGenerator\Research\Exception\TemplateNotFoundException;
 use Butschster\ContextGenerator\Research\MCP\DTO\ResearchCreateRequest;
 use Butschster\ContextGenerator\Research\MCP\DTO\ResearchUpdateRequest;
 
@@ -17,16 +20,16 @@ interface ResearchServiceInterface
     /**
      * Create a new research from template
      *
-     * @throws \Butschster\ContextGenerator\Research\Exception\TemplateNotFoundException
-     * @throws \Butschster\ContextGenerator\Research\Exception\ResearchException
+     * @throws TemplateNotFoundException
+     * @throws ResearchException
      */
     public function create(ResearchCreateRequest $request): Research;
 
     /**
      * Update an existing research
      *
-     * @throws \Butschster\ContextGenerator\Research\Exception\ResearchNotFoundException
-     * @throws \Butschster\ContextGenerator\Research\Exception\ResearchException
+     * @throws ResearchNotFoundException
+     * @throws ResearchException
      */
     public function update(ResearchId $researchId, ResearchUpdateRequest $request): Research;
 
@@ -57,8 +60,8 @@ interface ResearchServiceInterface
     /**
      * Add a memory entry to research
      *
-     * @throws \Butschster\ContextGenerator\Research\Exception\ResearchNotFoundException
-     * @throws \Butschster\ContextGenerator\Research\Exception\ResearchException
+     * @throws ResearchNotFoundException
+     * @throws ResearchException
      */
     public function addMemory(ResearchId $researchId, string $memory): Research;
 }
