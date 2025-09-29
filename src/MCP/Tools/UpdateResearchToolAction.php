@@ -88,38 +88,4 @@ final readonly class UpdateResearchToolAction
             return ToolResult::error('Failed to update research: ' . $e->getMessage());
         }
     }
-
-    /**
-     * Get list of changes applied based on the request
-     */
-    private function getAppliedChanges(ResearchUpdateRequest $request): array
-    {
-        $changes = [];
-
-        if ($request->title !== null) {
-            $changes[] = 'title';
-        }
-
-        if ($request->description !== null) {
-            $changes[] = 'description';
-        }
-
-        if ($request->status !== null) {
-            $changes[] = 'status';
-        }
-
-        if ($request->tags !== null) {
-            $changes[] = 'tags';
-        }
-
-        if ($request->entryDirs !== null) {
-            $changes[] = 'entry_directories';
-        }
-
-        if ($request->memory !== null) {
-            $changes[] = 'memory';
-        }
-
-        return $changes;
-    }
 }

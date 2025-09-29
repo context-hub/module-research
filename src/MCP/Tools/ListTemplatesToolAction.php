@@ -61,14 +61,12 @@ final readonly class ListTemplatesToolAction
             ]);
 
             return ToolResult::success($response);
-
         } catch (ResearchException $e) {
             $this->logger->error('Error listing research templates', [
                 'error' => $e->getMessage(),
             ]);
 
             return ToolResult::error($e->getMessage());
-
         } catch (\Throwable $e) {
             $this->logger->error('Unexpected error listing templates', [
                 'error' => $e->getMessage(),
@@ -98,7 +96,7 @@ final readonly class ListTemplatesToolAction
             // Filter by name (partial match, case insensitive)
             if ($request->nameContains !== null) {
                 $searchTerm = \strtolower(\trim($request->nameContains));
-                $templateName = \strtolower((string) $template->name);
+                $templateName = \strtolower((string)$template->name);
 
                 if (!\str_contains($templateName, $searchTerm)) {
                     return false;

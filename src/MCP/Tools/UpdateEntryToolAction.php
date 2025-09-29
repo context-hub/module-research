@@ -84,7 +84,6 @@ final readonly class UpdateEntryToolAction
             ]);
 
             return ToolResult::error($e->getMessage());
-
         } catch (EntryNotFoundException $e) {
             $this->logger->error('Entry not found', [
                 'research_id' => $request->researchId,
@@ -93,7 +92,6 @@ final readonly class UpdateEntryToolAction
             ]);
 
             return ToolResult::error($e->getMessage());
-
         } catch (ResearchException $e) {
             $this->logger->error('Error during research entry update', [
                 'research_id' => $request->researchId,
@@ -102,7 +100,6 @@ final readonly class UpdateEntryToolAction
             ]);
 
             return ToolResult::error($e->getMessage());
-
         } catch (\Throwable $e) {
             $this->logger->error('Unexpected error updating entry', [
                 'research_id' => $request->researchId,
@@ -112,39 +109,5 @@ final readonly class UpdateEntryToolAction
 
             return ToolResult::error('Failed to update entry: ' . $e->getMessage());
         }
-    }
-
-    /**
-     * Get list of changes applied based on the request
-     */
-    private function getAppliedChanges(EntryUpdateRequest $request): array
-    {
-        $changes = [];
-
-        if ($request->title !== null) {
-            $changes[] = 'title';
-        }
-
-        if ($request->description !== null) {
-            $changes[] = 'description';
-        }
-
-        if ($request->content !== null) {
-            $changes[] = 'content';
-        }
-
-        if ($request->status !== null) {
-            $changes[] = 'status';
-        }
-
-        if ($request->tags !== null) {
-            $changes[] = 'tags';
-        }
-
-        if ($request->textReplace !== null) {
-            $changes[] = 'text_replacement';
-        }
-
-        return $changes;
     }
 }

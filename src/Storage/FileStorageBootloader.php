@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Butschster\ContextGenerator\Research\Storage;
 
-use Butschster\ContextGenerator\DirectoriesInterface;
 use Butschster\ContextGenerator\Research\Config\ResearchConfigInterface;
 use Butschster\ContextGenerator\Research\Repository\EntryRepositoryInterface;
 use Butschster\ContextGenerator\Research\Repository\ResearchRepositoryInterface;
@@ -38,16 +37,15 @@ final class FileStorageBootloader extends Bootloader
                 FilesInterface $files,
                 LoggerInterface $logger,
                 ExceptionReporterInterface $reporter,
-                DirectoriesInterface $dirs,
                 TemplateRepositoryInterface $templateRepository,
                 ResearchRepositoryInterface $researchRepository,
                 EntryRepositoryInterface $entryRepository,
             ): StorageDriverInterface => new FileStorageDriver(
-                driverConfig: FileStorageConfig::fromArray([
-                    'base_path' => $config->getResearchesPath(),
-                    'templates_path' => $config->getTemplatesPath(),
-                    'default_entry_status' => $config->getDefaultEntryStatus(),
-                ]),
+                driverConfig: new FileStorageConfig(
+                    basePath: $config->getResearchesPath(),
+                    templatesPath: $config->getTemplatesPath(),
+                    defaultEntryStatus: $config->getDefaultEntryStatus(),
+                ),
                 templateRepository: $templateRepository,
                 researchRepository: $researchRepository,
                 entryRepository: $entryRepository,

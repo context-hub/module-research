@@ -20,53 +20,6 @@ final readonly class FileStorageConfig implements \JsonSerializable
         public string $fileEncoding = 'utf-8',
     ) {}
 
-    /**
-     * Create from array configuration
-     */
-    public static function fromArray(array $config): self
-    {
-        return new self(
-            basePath: $config['base_path'] ?? '.researches',
-            templatesPath: $config['templates_path'] ?? '.templates',
-            defaultEntryStatus: $config['default_entry_status'] ?? 'draft',
-            createDirectoriesOnDemand: $config['create_directories_on_demand'] ?? true,
-            validateTemplatesOnBoot: $config['validate_templates_on_boot'] ?? true,
-            maxFileSize: $config['max_file_size'] ?? 10485760,
-            allowedExtensions: $config['allowed_extensions'] ?? ['md', 'yaml'],
-            fileEncoding: $config['file_encoding'] ?? 'utf-8',
-        );
-    }
-
-    /**
-     * Validate configuration values
-     */
-    public function validate(): array
-    {
-        $errors = [];
-
-        if (empty($this->basePath)) {
-            $errors[] = 'Base path cannot be empty';
-        }
-
-        if (empty($this->templatesPath)) {
-            $errors[] = 'Templates path cannot be empty';
-        }
-
-        if (empty($this->defaultEntryStatus)) {
-            $errors[] = 'Default entry status cannot be empty';
-        }
-
-        if ($this->maxFileSize <= 0) {
-            $errors[] = 'Max file size must be greater than 0';
-        }
-
-        if (empty($this->allowedExtensions)) {
-            $errors[] = 'At least one allowed extension must be specified';
-        }
-
-        return $errors;
-    }
-
     #[\Override]
     public function jsonSerialize(): array
     {
